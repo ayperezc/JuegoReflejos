@@ -2,6 +2,7 @@ var initialTime = new Date();
 var endTime = new Date();
 var totalTimeMilliseconds = 0;
 var totalTime = 0;
+var bestTimeAchieved = 100;
 
 function colorAleatorio() {
     var letters = '0123456789ABCDEF'.split('');
@@ -21,7 +22,7 @@ function cuadradoOCirculo() {
     
 }
 
-function aparecerForma(){
+function aparecerFormaAleatoria(){
     var top=Math.random()*400;
     var left=Math.random()*400;
     var radius=Math.random()*200 + 100;
@@ -47,6 +48,11 @@ document.getElementById("forma").onclick=function(){
     totalTime = totalTimeMilliseconds/1000;
 
     document.getElementById("reactionTime").innerHTML = totalTime + " s";
-    setTimeout(aparecerForma,Math.random()*3000);
+    setTimeout(aparecerFormaAleatoria,Math.random()*3000);
+
+    if (bestTimeAchieved > totalTime) {
+        bestTimeAchieved = totalTime;
+        document.getElementById("bestTime").innerHTML = bestTimeAchieved + " s";   
+    }
     
 }
